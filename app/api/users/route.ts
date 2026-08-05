@@ -1,142 +1,33 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-
-
-const filePath =
-  path.join(
-    process.cwd(),
-    "data",
-    "users.json"
-  );
-
-
-
-
-
-
-function readUsers(){
-
-
-  const dir =
-    path.dirname(filePath);
-
-
-
-  if(!fs.existsSync(dir)){
-
-    fs.mkdirSync(
-      dir,
-      {
-        recursive:true,
-      }
-    );
-
-  }
-
-
-
-
-  if(!fs.existsSync(filePath)){
-
-
-    fs.writeFileSync(
-      filePath,
-      JSON.stringify([])
-    );
-
-
-  }
-
-
-
-
-
-  const data =
-    fs.readFileSync(
-      filePath,
-      "utf-8"
-    );
-
-
-
-  return JSON.parse(data);
-
-
-}
-
-
-
-
-
-
-
-
-
-function saveUsers(users:any[]){
-
-
-  const dir =
-    path.dirname(filePath);
-
-
-
-  if(!fs.existsSync(dir)){
-
-
-    fs.mkdirSync(
-      dir,
-      {
-        recursive:true,
-      }
-    );
-
-
-  }
-
-
-
-
-  fs.writeFileSync(
-
-    filePath,
-
-    JSON.stringify(
-      users,
-      null,
-      2
-    )
-
-  );
-
-
-}
-
-
-
-
-
-
+import { supabase } from "@/lib/supabase";
 
 
 
 export async function GET(){
 
+  const { data, error } =
+    await supabase
+      .from("users")
+      .select("*");
 
-  const users =
-    readUsers();
+
+  if(error){
+
+    return NextResponse.json(
+      {
+        error:error.message
+      },
+      {
+        status:500
+      }
+    );
+
+  }
 
 
-
-  return NextResponse.json(
-    users
-  );
-
+  return NextResponse.json(data);
 
 }
-
-
 
 
 
@@ -148,64 +39,55 @@ export async function POST(
   request:Request
 ){
 
-
   const user =
     await request.json();
 
 
 
-
-  const users =
-    readUsers();
-
-
-
-
-
-  const exists =
-    users.find(
-      (u:any)=>
-        u.id === user.id
-    );
+  const { data:existing } =
+    await supabase
+      .from("users")
+      .select("*")
+      .eq(
+        "id",
+        user.id
+      )
+      .maybeSingle();
 
 
 
 
+  if(existing){
 
 
-  let updatedUsers;
+    const { data,error } =
+      await supabase
+        .from("users")
+        .update(user)
+        .eq(
+          "id",
+          user.id
+        )
+        .select()
+        .single();
 
 
 
+    if(error){
 
-
-  if(exists){
-
-
-    updatedUsers =
-      users.map(
-        (u:any)=>
-
-          u.id === user.id
-
-          ? user
-
-          : u
-
+      return NextResponse.json(
+        {
+          error:error.message
+        },
+        {
+          status:500
+        }
       );
 
+    }
 
 
-  } else {
-
-
-    updatedUsers = [
-
-      ...users,
-
-      user,
-
-    ];
+    return NextResponse.json(data);
 
 
   }
@@ -215,18 +97,35 @@ export async function POST(
 
 
 
-  saveUsers(
-    updatedUsers
-  );
+  const { data,error } =
+    await supabase
+      .from("users")
+      .insert(user)
+      .select()
+      .single();
 
 
 
 
 
-  return NextResponse.json(
-    user
-  );
+  if(error){
 
+    return NextResponse.json(
+      {
+        error:error.message
+      },
+      {
+        status:500
+      }
+    );
+
+  }
+
+
+
+
+
+  return NextResponse.json(data);
 
 }
 
@@ -242,48 +141,42 @@ export async function PUT(
   request:Request
 ){
 
-
-  const updatedUser =
+  const user =
     await request.json();
 
 
 
 
-  const users =
-    readUsers();
+  const { data,error } =
+    await supabase
+      .from("users")
+      .update(user)
+      .eq(
+        "id",
+        user.id
+      )
+      .select()
+      .single();
 
 
 
 
+  if(error){
 
-  const updatedUsers =
-    users.map(
-      (user:any)=>
-
-        user.id === updatedUser.id
-
-        ? updatedUser
-
-        : user
-
+    return NextResponse.json(
+      {
+        error:error.message
+      },
+      {
+        status:500
+      }
     );
 
+  }
 
 
 
 
-
-  saveUsers(
-    updatedUsers
-  );
-
-
-
-
-
-  return NextResponse.json(
-    updatedUser
-  );
-
+  return NextResponse.json(data);
 
 }
