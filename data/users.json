@@ -1,0 +1,18 @@
+[
+  {
+    "id": "305c5f5c-f31c-4655-9074-3bd572335c63",
+    "name": "Марк",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "coupleCode": "LOVE-P82C",
+    "partnerId": "49ac5078-b1f5-4e08-a24e-6bf1b0fc20cb",
+    "partnerName": "Джессика"
+  },
+  {
+    "id": "49ac5078-b1f5-4e08-a24e-6bf1b0fc20cb",
+    "name": "Джессика",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "coupleCode": "LOVE-P82C",
+    "partnerId": "305c5f5c-f31c-4655-9074-3bd572335c63",
+    "partnerName": "Марк"
+  }
+]

@@ -1,0 +1,85 @@
+[
+  {
+    "emoji": "🌟",
+    "title": "море",
+    "targetAmount": 800000,
+    "contributions": [
+      {
+        "userId": "69a65794-cfef-4118-a6d2-c92c1380492a",
+        "amount": 14555
+      }
+    ],
+    "id": "478be545-3ac7-4e74-8014-8fbec5161e45",
+    "ownerId": "69a65794-cfef-4118-a6d2-c92c1380492a",
+    "ownerName": "арсений",
+    "coupleId": "8d5736ea-3a5b-4f56-b7e6-c53b82f3bcda"
+  },
+  {
+    "emoji": "🌟",
+    "title": "44444444",
+    "targetAmount": 44444444444,
+    "contributions": [
+      {
+        "userId": "13e7c4a2-51f5-4097-a525-2cd4d800f832",
+        "amount": 1111
+      },
+      {
+        "userId": "13e7c4a2-51f5-4097-a525-2cd4d800f832",
+        "amount": 1432
+      }
+    ],
+    "id": "3531580b-3d1c-4f7e-aba3-a35bea4158a1",
+    "ownerId": "13e7c4a2-51f5-4097-a525-2cd4d800f832",
+    "ownerName": "виктор",
+    "coupleId": "b69ccb47-55d6-4dd7-8bd5-94c2558e5e03"
+  },
+  {
+    "emoji": "🌟",
+    "title": "маьльдивы",
+    "targetAmount": 3500,
+    "contributions": [
+      {
+        "userId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+        "amount": 560
+      },
+      {
+        "userId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+        "amount": 44
+      },
+      {
+        "userId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+        "amount": 4314
+      },
+      {
+        "userId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+        "amount": 4314
+      },
+      {
+        "userId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+        "amount": 31553535353
+      },
+      {
+        "userId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+        "amount": 351513135315135100000
+      },
+      {
+        "userId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+        "amount": 1.3513513513153135e+43
+      }
+    ],
+    "id": "781e1a79-80c9-4cd8-8e97-9566889f89e0",
+    "ownerId": "3e7c8dda-24b0-4ff2-8c68-2fddbad14fe8",
+    "ownerName": "катя",
+    "coupleId": "24d6dea6-b34e-4d1d-928d-c7963d78f467"
+  },
+  {
+    "emoji": "🌟",
+    "title": "кал на развес",
+    "targetAmount": 900000,
+    "contributions": [],
+    "id": "aec4ac28-e3b3-45f7-aa50-6d6943d5ebe3",
+    "ownerId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+    "ownerName": "даня",
+    "coupleId": "24d6dea6-b34e-4d1d-928d-c7963d78f467"
+  }
+]

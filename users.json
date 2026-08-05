@@ -1,0 +1,146 @@
+[
+  {
+    "id": "236a7f19-166c-4535-a27a-34feaa09a48f",
+    "name": "2",
+    "coupleId": "7edc952f-1735-4356-ad8c-6cf1888cd4fe",
+    "coupleCode": "LOVE-FKYW",
+    "partnerId": "",
+    "partnerName": ""
+  },
+  {
+    "id": "060d83ce-da55-4682-8746-d064ff8cb76a",
+    "name": "1",
+    "coupleId": "281a7ad3-91c0-41d0-8b69-3d47589cd12c",
+    "coupleCode": "LOVE-MMOX",
+    "partnerId": "236a7f19-166c-4535-a27a-34feaa09a48f",
+    "partnerName": "2"
+  },
+  {
+    "id": "23fbcf61-3664-4e3e-800e-aa12026c37a3",
+    "name": "2",
+    "coupleId": "d8ee88e9-e9f3-4f09-8278-d3e0779ff4e2",
+    "coupleCode": "LOVE-5O7T",
+    "partnerId": "4d85dd45-6778-48d2-927a-1d320114f789",
+    "partnerName": "1"
+  },
+  {
+    "id": "4d85dd45-6778-48d2-927a-1d320114f789",
+    "name": "1",
+    "coupleId": "d8ee88e9-e9f3-4f09-8278-d3e0779ff4e2",
+    "coupleCode": "LOVE-5O7T",
+    "partnerId": "23fbcf61-3664-4e3e-800e-aa12026c37a3",
+    "partnerName": "2"
+  },
+  {
+    "id": "4aade13a-ce90-42f4-a80c-5534f22ff26c",
+    "name": "1",
+    "coupleId": "63608194-9044-434a-ae86-7c39f40f110e",
+    "coupleCode": "LOVE-F9KO",
+    "partnerId": "9f7f644b-dedc-4ccc-abe2-e4de4d63b361",
+    "partnerName": "2"
+  },
+  {
+    "id": "9f7f644b-dedc-4ccc-abe2-e4de4d63b361",
+    "name": "2",
+    "coupleId": "63608194-9044-434a-ae86-7c39f40f110e",
+    "coupleCode": "LOVE-F9KO",
+    "partnerId": "4aade13a-ce90-42f4-a80c-5534f22ff26c",
+    "partnerName": "1"
+  },
+  {
+    "id": "f11072fb-d6c1-482a-9a3f-863e4f4d545f",
+    "name": "виктор",
+    "coupleId": "eaba6ff0-7698-4f65-9c95-8d295a6f394e",
+    "coupleCode": "LOVE-CUYB",
+    "partnerId": "",
+    "partnerName": ""
+  },
+  {
+    "id": "4b6552e1-7016-446a-b5bf-4f124abb7524",
+    "name": "1",
+    "coupleId": "90fcffbc-040d-4e0b-99c4-200ca6bc4916",
+    "coupleCode": "LOVE-QBH9",
+    "partnerId": "c280681a-d21d-4057-b297-0c0cca799fc0",
+    "partnerName": "2"
+  },
+  {
+    "id": "c280681a-d21d-4057-b297-0c0cca799fc0",
+    "name": "2",
+    "coupleId": "90fcffbc-040d-4e0b-99c4-200ca6bc4916",
+    "coupleCode": "LOVE-QBH9",
+    "partnerId": "4b6552e1-7016-446a-b5bf-4f124abb7524",
+    "partnerName": "1"
+  },
+  {
+    "id": "bbf99d14-c962-4253-99c1-c5f4f42e84c2",
+    "name": "1",
+    "coupleId": "4518482f-1498-44e6-bb64-502dd09d62a5",
+    "coupleCode": "LOVE-RJ6A",
+    "partnerId": "1166533f-211c-47a4-aa03-18c89d890c39",
+    "partnerName": "2"
+  },
+  {
+    "id": "1166533f-211c-47a4-aa03-18c89d890c39",
+    "name": "2",
+    "coupleId": "4518482f-1498-44e6-bb64-502dd09d62a5",
+    "coupleCode": "LOVE-RJ6A",
+    "partnerId": "bbf99d14-c962-4253-99c1-c5f4f42e84c2",
+    "partnerName": "1"
+  },
+  {
+    "id": "91ae4b42-5e2f-46b1-8b39-6dc004eadfa8",
+    "name": "2",
+    "coupleId": "7031d9da-b39e-4995-82e4-bf30738cc4e2",
+    "coupleCode": "LOVE-Z1T4",
+    "partnerId": "9108b23c-bf26-4183-803c-e04e20f69b74",
+    "partnerName": "1"
+  },
+  {
+    "id": "9108b23c-bf26-4183-803c-e04e20f69b74",
+    "name": "1",
+    "coupleId": "7031d9da-b39e-4995-82e4-bf30738cc4e2",
+    "coupleCode": "LOVE-Z1T4",
+    "partnerId": "91ae4b42-5e2f-46b1-8b39-6dc004eadfa8",
+    "partnerName": "2"
+  },
+  {
+    "id": "69a65794-cfef-4118-a6d2-c92c1380492a",
+    "name": "арсений",
+    "coupleId": "8d5736ea-3a5b-4f56-b7e6-c53b82f3bcda",
+    "coupleCode": "LOVE-2QMU",
+    "partnerId": "7419751c-02ee-4028-8a87-cf1b6dd6e9b0",
+    "partnerName": "даша"
+  },
+  {
+    "id": "7419751c-02ee-4028-8a87-cf1b6dd6e9b0",
+    "name": "даша",
+    "coupleId": "8d5736ea-3a5b-4f56-b7e6-c53b82f3bcda",
+    "coupleCode": "LOVE-2QMU",
+    "partnerId": "69a65794-cfef-4118-a6d2-c92c1380492a",
+    "partnerName": "арсений"
+  },
+  {
+    "id": "13e7c4a2-51f5-4097-a525-2cd4d800f832",
+    "name": "виктор",
+    "coupleId": "b69ccb47-55d6-4dd7-8bd5-94c2558e5e03",
+    "coupleCode": "LOVE-YOAL",
+    "partnerId": "",
+    "partnerName": ""
+  },
+  {
+    "id": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+    "name": "даня",
+    "coupleId": "24d6dea6-b34e-4d1d-928d-c7963d78f467",
+    "coupleCode": "LOVE-33F6",
+    "partnerId": "3e7c8dda-24b0-4ff2-8c68-2fddbad14fe8",
+    "partnerName": "катя"
+  },
+  {
+    "id": "3e7c8dda-24b0-4ff2-8c68-2fddbad14fe8",
+    "name": "катя",
+    "coupleId": "24d6dea6-b34e-4d1d-928d-c7963d78f467",
+    "coupleCode": "LOVE-33F6",
+    "partnerId": "4ab8c1a1-c8e9-4d79-9f9a-690449fa9f6c",
+    "partnerName": "даня"
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "6682cb88-6fab-4c21-a07b-7003cca35593",
+    "createdAt": "2026-08-05T22:11:50.376Z",
+    "text": "❤️ Марк добавил(а) новое желание: Косметика",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": null
+  },
+  {
+    "id": "675c6c6a-c0dc-4d59-b310-5e60e6fd57cc",
+    "createdAt": "2026-08-05T22:12:04.748Z",
+    "text": "🎁 Джессика исполнил(а) желание Марк: Косметика ❤️",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": "305c5f5c-f31c-4655-9074-3bd572335c63"
+  },
+  {
+    "id": "6fd72ba6-4028-425a-90b0-def8865cbc77",
+    "createdAt": "2026-08-05T22:12:40.997Z",
+    "text": "❤️ Джессика добавил(а) новое желание: телевизор",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": null
+  },
+  {
+    "id": "4a875b76-c585-492c-9693-c8527a608dac",
+    "createdAt": "2026-08-05T22:12:54.244Z",
+    "text": "🎁 Марк исполнил(а) желание Джессика: телевизор ❤️",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": "49ac5078-b1f5-4e08-a24e-6bf1b0fc20cb"
+  },
+  {
+    "id": "a45dc33b-f94e-4d33-bf64-561e94d8f798",
+    "createdAt": "2026-08-05T22:13:11.228Z",
+    "text": "✈️ Джессика создал(а) новую общую мечту: отпуск",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": null
+  },
+  {
+    "id": "e8738dc2-f48d-46aa-ad92-743d2f3e90ad",
+    "createdAt": "2026-08-05T22:13:16.587Z",
+    "text": "💰 Джессика добавил(а) 30 000 ₽ в мечту \"отпуск\"",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": null
+  },
+  {
+    "id": "e1e1b24c-fb38-4441-9cfa-d9ebbfc939bb",
+    "createdAt": "2026-08-05T22:13:28.802Z",
+    "text": "💰 Марк добавил(а) 120 000 ₽ в мечту \"отпуск\"",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": null
+  },
+  {
+    "id": "ccdc35ee-dfad-4f97-a2d1-3aa9685c871c",
+    "createdAt": "2026-08-05T22:13:48.459Z",
+    "text": "💰 Джессика добавил(а) 29 990 ₽ в мечту \"отпуск\"",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": null
+  },
+  {
+    "id": "a71b82fb-f762-44da-92b1-a7014c46480c",
+    "createdAt": "2026-08-05T22:13:57.928Z",
+    "text": "💰 Марк добавил(а) 10 ₽ в мечту \"отпуск\"",
+    "coupleId": "ac2b3dca-5282-41b7-89da-6fa7c48bdb16",
+    "targetUserId": null
+  }
+]
