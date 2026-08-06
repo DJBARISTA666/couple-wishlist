@@ -1,282 +1,57 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { supabase } from "@/lib/supabase";
 
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const userId = url.searchParams.get("userId");
 
-const filePath =
-  path.join(
-    process.cwd(),
-    "data",
-    "readNotifications.json"
-  );
-
-
-
-
-
-
-
-function readData(){
-
-
-  const dir =
-    path.dirname(filePath);
-
-
-
-  if(!fs.existsSync(dir)){
-
-
-    fs.mkdirSync(
-      dir,
-      {
-        recursive:true,
-      }
-    );
-
-
-  }
-
-
-
-
-
-  if(!fs.existsSync(filePath)){
-
-
-    fs.writeFileSync(
-      filePath,
-      JSON.stringify([])
-    );
-
-
-  }
-
-
-
-
-
-  const data =
-    fs.readFileSync(
-      filePath,
-      "utf-8"
-    );
-
-
-
-  return JSON.parse(data);
-
-
-}
-
-
-
-
-
-
-
-
-function saveData(data:any[]){
-
-
-  fs.writeFileSync(
-
-    filePath,
-
-    JSON.stringify(
-      data,
-      null,
-      2
-    )
-
-  );
-
-
-}
-
-
-
-
-
-
-
-
-
-export async function GET(
-  request:Request
-){
-
-
-  const url =
-    new URL(request.url);
-
-
-
-  const userId =
-    url.searchParams.get("userId");
-
-
-
-
-  if(!userId){
-
+  if (!userId) {
     return NextResponse.json([]);
-
   }
 
+  const { data, error } = await supabase
+    .from("read_notifications")
+    .select("*")
+    .eq("userId", userId);
 
-
-
-
-  const data =
-    readData();
-
-
-
-
-
-  return NextResponse.json(
-
-    data.filter(
-      (item:any)=>
-        item.userId === userId
-    )
-
-  );
-
-
-}
-
-
-
-
-
-
-
-
-
-export async function POST(
-  request:Request
-){
-
-  const body =
-    await request.json();
-
-
-
-  const data =
-    readData();
-
-
-
-
-
-  const exists =
-    data.find(
-      (item:any)=>
-
-        item.userId === body.userId &&
-        item.notificationId === body.notificationId
-
-    );
-
-
-
-
-
-  if(!exists){
-
-
-    data.push({
-
-      id:
-        crypto.randomUUID(),
-
-
-      userId:
-        body.userId,
-
-
-      notificationId:
-        body.notificationId,
-
-
-    });
-
-
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-
-
-
-
-
-  saveData(data);
-
-
-
-
-
-
-  return NextResponse.json({
-    success:true,
-  });
-
-
+  return NextResponse.json(data);
 }
 
+export async function POST(request: Request) {
+  const body = await request.json();
 
-
-
-
-
-
-
-
-export async function DELETE(
-  request:Request
-){
-
-  const body =
-    await request.json();
-
-
-
-
-
-  const data =
-    readData();
-
-
-
-
-
-  const updated =
-
-    data.filter(
-      (item:any)=>
-
-        !(
-          item.userId === body.userId
-        )
-
+  const { error } = await supabase
+    .from("read_notifications")
+    .upsert(
+      {
+        userId: body.userId,
+        notificationId: body.notificationId,
+      },
+      { onConflict: "userId,notificationId", ignoreDuplicates: true }
     );
 
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 
+  return NextResponse.json({ success: true });
+}
 
+export async function DELETE(request: Request) {
+  const body = await request.json();
 
+  const { error } = await supabase
+    .from("read_notifications")
+    .delete()
+    .eq("userId", body.userId);
 
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 
-  saveData(updated);
-
-
-
-
-
-
-  return NextResponse.json({
-    success:true,
-  });
-
-
+  return NextResponse.json({ success: true });
 }

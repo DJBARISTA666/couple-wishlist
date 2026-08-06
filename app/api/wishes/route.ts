@@ -1,270 +1,62 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { supabase } from "@/lib/supabase";
 
+export async function GET() {
+  const { data, error } = await supabase
+    .from("wishes")
+    .select("*");
 
-const filePath =
-  path.join(
-    process.cwd(),
-    "data",
-    "wishes.json"
-  );
-
-
-
-
-function readWishes(){
-
-  if(!fs.existsSync(filePath)){
-
-    return [];
-
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-
-  const data =
-    fs.readFileSync(
-      filePath,
-      "utf-8"
-    );
-
-
-  return JSON.parse(data);
-
+  return NextResponse.json(data);
 }
 
+export async function POST(request: Request) {
+  const wish = await request.json();
 
+  const { data, error } = await supabase
+    .from("wishes")
+    .upsert(wish)
+    .select()
+    .single();
 
-
-
-function saveWishes(wishes:any[]){
-
-  const dir =
-    path.dirname(filePath);
-
-
-
-  if(!fs.existsSync(dir)){
-
-    fs.mkdirSync(
-      dir,
-      {
-        recursive:true,
-      }
-    );
-
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-
-
-  fs.writeFileSync(
-    filePath,
-    JSON.stringify(
-      wishes,
-      null,
-      2
-    )
-  );
-
+  return NextResponse.json(data);
 }
 
+export async function PUT(request: Request) {
+  const updatedWish = await request.json();
 
+  const { data, error } = await supabase
+    .from("wishes")
+    .update(updatedWish)
+    .eq("id", updatedWish.id)
+    .select()
+    .single();
 
-
-
-
-
-
-export async function GET(){
-
-
-  const wishes =
-    readWishes();
-
-
-
-  return NextResponse.json(
-    wishes
-  );
-
-
-}
-
-
-
-
-
-
-
-
-
-export async function POST(
-  request:Request
-){
-
-
-  const wish =
-    await request.json();
-
-
-
-  const wishes =
-    readWishes();
-
-
-
-
-  const exists =
-    wishes.find(
-      (w:any)=>
-        w.id === wish.id
-    );
-
-
-
-
-  let updated;
-
-
-
-  if(exists){
-
-
-    updated =
-      wishes.map(
-        (w:any)=>
-
-          w.id === wish.id
-
-          ? wish
-
-          : w
-
-      );
-
-
-  } else {
-
-
-    updated = [
-      ...wishes,
-      wish
-    ];
-
-
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-
-
-
-
-  saveWishes(updated);
-
-
-
-  return NextResponse.json(
-    wish
-  );
-
-
+  return NextResponse.json(data);
 }
 
+export async function DELETE(request: Request) {
+  const { id } = await request.json();
 
+  const { error } = await supabase
+    .from("wishes")
+    .delete()
+    .eq("id", id);
 
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 
-
-
-
-
-
-export async function PUT(
-  request:Request
-){
-
-
-  const updatedWish =
-    await request.json();
-
-
-
-  const wishes =
-    readWishes();
-
-
-
-
-  const updated =
-
-    wishes.map(
-      (wish:any)=>
-
-        wish.id === updatedWish.id
-
-        ? updatedWish
-
-        : wish
-
-    );
-
-
-
-
-  saveWishes(updated);
-
-
-
-  return NextResponse.json(
-    updatedWish
-  );
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-export async function DELETE(
-  request:Request
-){
-
-
-  const {id} =
-    await request.json();
-
-
-
-  const wishes =
-    readWishes();
-
-
-
-
-  const updated =
-
-    wishes.filter(
-      (wish:any)=>
-        wish.id !== id
-    );
-
-
-
-
-  saveWishes(updated);
-
-
-
-  return NextResponse.json({
-
-    success:true,
-
-  });
-
-
+  return NextResponse.json({ success: true });
 }
