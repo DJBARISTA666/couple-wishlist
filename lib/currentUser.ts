@@ -8,155 +8,94 @@ export type User = {
 };
 
 
-
-
-export function getCurrentUser(): User {
-
+export function getCurrentUser(): User | null {
 
   if (typeof window === "undefined") {
-
-    return {
-      id: "",
-      name: "",
-    };
-
+    return null;
   }
 
-
-
-  const saved =
-    localStorage.getItem("currentUser");
-
-
+  const saved = localStorage.getItem("currentUser");
 
   if (!saved) {
-
-    return {
-      id: "",
-      name: "",
-    };
-
+    return null;
   }
-
-
-
 
   try {
-
-
     return JSON.parse(saved);
-
-
-
   } catch {
-
-
-    return {
-      id: "",
-      name: "",
-    };
-
-
+    return null;
   }
-
-
 }
 
 
 
-
-
-
-
-export function setCurrentUser(
-  user: User
-) {
-
+export function setCurrentUser(user: User) {
 
   localStorage.setItem(
     "currentUser",
     JSON.stringify(user)
   );
 
+}
+
+
+
+export async function createUser(user: User) {
+
+  const response = await fetch("/api/users", {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify(user),
+
+  });
+
+
+  const data = await response.json();
+
+
+  if (!response.ok) {
+
+    console.error("CREATE USER ERROR:", data);
+
+    throw new Error(
+      data.error || "User create failed"
+    );
+
+  }
+
+
+  return data;
 
 }
 
 
 
+export async function getUser(id:string) {
 
 
-
-export async function createUser(
-  user: User
-) {
-
-
-  const response =
-    await fetch("/api/users", {
-
-      method:"POST",
-
-      headers:{
-        "Content-Type":"application/json",
-      },
-
-      body:
-        JSON.stringify(user),
-
-    });
+  const response = await fetch(
+    `/api/users?id=${id}`
+  );
 
 
-
-  return await response.json();
-
-
-}
+  const data = await response.json();
 
 
+  if(!response.ok){
+
+    throw new Error(
+      data.error || "User fetch failed"
+    );
+
+  }
 
 
-
-
-export async function getUsers() {
-
-
-  const response =
-    await fetch("/api/users");
-
-
-  return await response.json();
-
-
-}
-
-
-
-
-
-
-
-export async function updateUser(
-  user: User
-) {
-
-
-  const response =
-    await fetch("/api/users", {
-
-      method:"PUT",
-
-      headers:{
-        "Content-Type":"application/json",
-      },
-
-      body:
-        JSON.stringify(user),
-
-    });
-
-
-
-  return await response.json();
+  return data;
 
 
 }

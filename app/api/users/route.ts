@@ -2,13 +2,41 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 
 
+export async function GET(
+  request: Request
+){
 
-export async function GET(){
+  const { searchParams } =
+    new URL(request.url);
 
-  const { data, error } =
-    await supabase
+
+  const id =
+    searchParams.get("id");
+
+
+
+  let query =
+    supabase
       .from("users")
       .select("*");
+
+
+
+  if(id){
+
+    query =
+      query.eq(
+        "id",
+        id
+      );
+
+  }
+
+
+
+  const {data,error} =
+    await query;
+
 
 
   if(error){
@@ -25,158 +53,56 @@ export async function GET(){
   }
 
 
-  return NextResponse.json(data);
+  return NextResponse.json(
+    id ? data[0] ?? null : data
+  );
 
 }
-
-
 
 
 
 
 
 export async function POST(
-  request:Request
+ request:Request
 ){
 
-  const user =
-    await request.json();
+
+ const body =
+   await request.json();
 
 
 
-  const { data:existing } =
-    await supabase
-      .from("users")
-      .select("*")
-      .eq(
-        "id",
-        user.id
-      )
-      .maybeSingle();
+ const {data,error} =
+   await supabase
+     .from("users")
+     .upsert(body)
+     .select()
+     .single();
 
 
 
+ if(error){
 
-  if(existing){
-
-
-    const { data,error } =
-      await supabase
-        .from("users")
-        .update(user)
-        .eq(
-          "id",
-          user.id
-        )
-        .select()
-        .single();
+   console.error(error);
 
 
-
-    if(error){
-
-      return NextResponse.json(
-        {
-          error:error.message
-        },
-        {
-          status:500
-        }
-      );
-
+   return NextResponse.json(
+    {
+      error:error.message,
+      details:error.details,
+      hint:error.hint
+    },
+    {
+      status:500
     }
+   );
 
-
-    return NextResponse.json(data);
-
-
-  }
+ }
 
 
 
+ return NextResponse.json(data);
 
-
-
-  const { data,error } =
-    await supabase
-      .from("users")
-      .insert(user)
-      .select()
-      .single();
-
-
-
-
-
-  if(error){
-
-    return NextResponse.json(
-      {
-        error:error.message
-      },
-      {
-        status:500
-      }
-    );
-
-  }
-
-
-
-
-
-  return NextResponse.json(data);
-
-}
-
-
-
-
-
-
-
-
-
-export async function PUT(
-  request:Request
-){
-
-  const user =
-    await request.json();
-
-
-
-
-  const { data,error } =
-    await supabase
-      .from("users")
-      .update(user)
-      .eq(
-        "id",
-        user.id
-      )
-      .select()
-      .single();
-
-
-
-
-  if(error){
-
-    return NextResponse.json(
-      {
-        error:error.message
-      },
-      {
-        status:500
-      }
-    );
-
-  }
-
-
-
-
-  return NextResponse.json(data);
 
 }
